@@ -65,7 +65,7 @@ const SignUp = ({ navigation }) => {
               initialValues={{
                 fullName: '',
                 email: '',
-                // phoneNumber: '',
+                age: '',
                 password: '',
                 confirmPassword: '',
               }}
