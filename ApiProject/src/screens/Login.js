@@ -55,7 +55,7 @@ const Login = ({ navigation }) => {
           // }
 
           try {
-            const data = await AsyncStorage.getItem('name')
+            const data = await AsyncStorage.getItem(values.email)
             const output = JSON.parse(data)
 
             // const user = JSON.parse(values);

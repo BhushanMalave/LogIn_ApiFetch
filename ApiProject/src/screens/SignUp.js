@@ -87,7 +87,7 @@ const SignUp = ({ navigation }) => {
 
                 try {
                   const jsonValue = JSON.stringify(values)
-                  await AsyncStorage.setItem('name', jsonValue)
+                  await AsyncStorage.setItem(values.email, jsonValue)
                   alert("Successfully Added")
                   console.log(jsonValue);
                 } catch (e) {
@@ -195,12 +195,12 @@ const styles = StyleSheet.create({
   },
   loginButton:
   {
-   backgroundColor:'orange',
-   marginVertical:10,
-   height:35,
-   width:80,
-   borderRadius:5,
-   
+    backgroundColor: 'orange',
+    marginVertical: 10,
+    height: 35,
+    width: 80,
+    borderRadius: 5,
+
   },
 });
 export default SignUp;
