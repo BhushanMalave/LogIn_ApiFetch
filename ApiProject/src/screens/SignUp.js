@@ -79,23 +79,35 @@ const SignUp = ({ navigation }) => {
                 // console.log('Im Here!!!!!!!', response);
                 // if (response.user) {
                 //   alert('succefully added');
+                //   const jsonValue =JSON.stringify(response.user);
+                //   await AsyncStorage.setItem(response.user._id,jsonValue);
                 //   navigation.navigate('Project');
                 // } else {
                 //   alert('Already Exists');
                 // }
 
-
-                try {
-                  const jsonValue = JSON.stringify(values)
-                  await AsyncStorage.setItem(values.email, jsonValue)
-                  alert("Successfully Added")
-                  console.log(jsonValue);
-                } catch (e) {
-                  console.log(e);
-                  alert('User Already Exist');
+                try{
+                  await AsyncStorage.setItem(values.email,JSON.stringify(values));
+                  alert ("successfully added")
+                  console.log(values);
                 }
-                // console.log(values);
-                // navigation.navigate('Project');
+                catch(err){
+                  console.log(err);
+                  alert ("user already exist")
+                }
+
+
+                // try {
+                //   const jsonValue = JSON.stringify(values)
+                //   await AsyncStorage.setItem(values.email, jsonValue)
+                //   alert("Successfully Added")
+                //   console.log(jsonValue);
+                // } catch (e) {
+                //   console.log(e);
+                //   alert('User Already Exist');
+                // }
+                // // console.log(values);
+                // // navigation.navigate('Project');
               }}>
               {({ handleSubmit, isValid }) => (
                 <>
@@ -138,28 +150,7 @@ const SignUp = ({ navigation }) => {
                     <Text style={{ fontSize: 15, textAlign: 'center', color: 'white', marginTop: 8, }} onPress={handleSubmit} disabled={!isValid}  >
                       SignUp
                     </Text></Pressable>
-                  {/* <Pressable
-                    onPress={handleSubmit}
-                    title="SIGN UP"
-                    disabled={!isValid}
-                    style={{
-                      alignContent: 'center',
-                      backgroundColor: 'grey',
-                      width: 120,
-                      height: 35,
-                      marginTop: 10,
-                      borderWidth: 2,
-                      borderRadius: 10,
-                    }}>
-                    <Text
-                      style={{
-                        alignContent: 'center',
-                        textAlign: 'center',
-                        fontSize: 20,
-                      }}>
-                      Sign Up
-                    </Text>
-                  </Pressable> */}
+                 
                 </>
               )}
             </Formik>

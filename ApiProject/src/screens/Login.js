@@ -43,33 +43,62 @@ const Login = ({ navigation }) => {
         validationSchema={loginValidationSchema}
         initialValues={{ email: '', password: '' }}
         onSubmit={async values => {
-          // // console.log(values);
+          // onSubmit={async (values) => {
+            try {
+              const data = await AsyncStorage.getItem(values.email);
+              const output = JSON.parse(data);
+
+              // const user = JSON.parse(values);
+              if (output.email == values.email && output.password == values.password
+              ) {
+                // alert('successfully logged in');
+                console.log(values);
+                navigation.navigate('User',{
+                  email:output.email,
+                  password:output.password,
+                  age:output.age,
+                  fullName:output.fullName,
+                });
+              } else {
+                alert('Incorrect email or password');
+              }
+            } catch (err) {
+              console.log(err);
+            }
+          // }}>
+          // console.log(values);
           // const response = await signIn({
           //   email: values.email,
           //   password: values.password,
           // });
+          // console.log(response.user);
           // if (response.user) {
-          //   navigation.navigate('Count');
+          
+          //   navigation.navigate('User',);
           // } else {
           //   alert('Enter correct username and password');
           // }
 
-          try {
-            const data = await AsyncStorage.getItem(values.email)
-            const output = JSON.parse(data)
+          // try {
+            // const data = await AsyncStorage.getItem(values.email)
+            // const output = JSON.parse(data)
+          //   console.log(output);
 
-            // const user = JSON.parse(values);
-            if (output.email == values.email && output.password == values.password) {
-              alert("Successfully Logged In");
-              console.log(values);
-              navigation.navigate('Count');
-            };
+          //   // const user = JSON.parse(values);
+          //   if (output.email == values.email && output.password == values.password) {
+          //     alert("Successfully Logged In");
+          //     iname = output.name;
+          //     iage = output.age;
+          //     iemail = output.email;pva
+          //     console.log(values);
+          //     navigation.navigate('User',  { iname ,iemail ,iage});
+          //   };
 
-          }
-          catch (err) {
-            console.log(err);
-            alert("Incorrect email or password");
-          }
+          // }
+          // catch (err) {
+          //   console.log(err);
+          //   alert("Incorrect email or password");
+          // }
         }}>
         {({
           handleChange,
@@ -106,29 +135,10 @@ const Login = ({ navigation }) => {
                 {errors.password}
               </Text>
             )}
-            <Button onPress={handleSubmit} title="LOGIN" disabled={!isValid} />
-            {/* <Pressable
-              onPress={handleSubmit}
-              title="SIGN UP"
-              disabled={!isValid}
-              style={{
-                alignContent: 'center',
-                backgroundColor: 'cyan',
-                width: 120,
-                height: 35,
-                marginTop: 10,
-                borderWidth: 1,
-                borderRadius: 10,
-              }}>
-              <Text
-                style={{
-                  alignContent: 'center',
-                  textAlign: 'center',
-                  fontSize: 20,
-                }}>
-                Login
-              </Text>
-            </Pressable> */}
+            <Pressable style={styles.loginButton}>
+                    <Text style={{ fontSize: 15, textAlign: 'center', color: 'white', marginTop: 8, }} onPress={handleSubmit} disabled={!isValid}  >
+                      Login
+                    </Text></Pressable>
           </>
         )}
       </Formik>
@@ -156,6 +166,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     textAlign: 'center',
+  },
+  loginButton:
+  {
+    backgroundColor: 'orange',
+    marginVertical: 10,
+    height: 35,
+    width: 80,
+    borderRadius: 5,
+
   },
 });
 
