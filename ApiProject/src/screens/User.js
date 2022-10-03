@@ -12,6 +12,7 @@ import {
   TextInput,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default User =  ({navigation}) => {
@@ -22,17 +23,23 @@ export default User =  ({navigation}) => {
     return (
          
         <SafeAreaView style={styles.body}>
+            <Icon name="user" size={180} />
             <View>
             <Text style={ {fontSize:30,textAlign:'center',marginHorizontal:5,marginVertical:30,}}>Profile Details</Text>
             <View style={styles.container}>
              <Text style={styles.text1}>    Name</Text>
-             <Text style={styles.text}>{route.params.fullName}</Text>
+             <Text style={styles.text}>{route.params.name}</Text>
              <Text  style={styles.text1}>    Email</Text>
              <Text style={styles.text}>{route.params.email}</Text>
              <Text  style={styles.text1}>    Age</Text>
             <Text style={styles.text}>{route.params.age}</Text>
             </View>
-
+            
+            <Pressable style={styles.Button}>
+                    <Text style={{ fontSize: 15, textAlign: 'center', color: 'black', marginTop: 8, }} onPress={() => {navigation.navigate('UpdatePage')}}  >
+                      Update
+                    </Text></Pressable>
+                
             <Pressable style={styles.Button}>
                     <Text style={{ fontSize: 15, textAlign: 'center', color: 'black', marginTop: 8, }} onPress={() => {navigation.navigate('Project')}}  >
                       Logout
@@ -50,7 +57,7 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems:'center',
         alignContent:'center',
-        backgroundColor:'cyan'
+        // backgroundColor:'cyan'
     },
     container:{
         marginHorizontal:25,

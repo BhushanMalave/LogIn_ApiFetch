@@ -43,41 +43,48 @@ const Login = ({ navigation }) => {
         validationSchema={loginValidationSchema}
         initialValues={{ email: '', password: '' }}
         onSubmit={async values => {
-          // onSubmit={async (values) => {
-            try {
-              const data = await AsyncStorage.getItem(values.email);
-              const output = JSON.parse(data);
+      
+            // try {
+            //   const data = await AsyncStorage.getItem(values.email);
+            //   const output = JSON.parse(data);
 
-              // const user = JSON.parse(values);
-              if (output.email == values.email && output.password == values.password
-              ) {
-                // alert('successfully logged in');
-                console.log(values);
-                navigation.navigate('User',{
-                  email:output.email,
-                  password:output.password,
-                  age:output.age,
-                  fullName:output.fullName,
-                });
-              } else {
-                alert('Incorrect email or password');
-              }
-            } catch (err) {
-              console.log(err);
-            }
-          // }}>
-          // console.log(values);
-          // const response = await signIn({
-          //   email: values.email,
-          //   password: values.password,
-          // });
-          // console.log(response.user);
-          // if (response.user) {
+            //   // const user = JSON.parse(values);
+            //   if (output.email == values.email && output.password == values.password
+            //   ) {
+            //     // alert('successfully logged in');
+            //     console.log(values);
+            //     navigation.navigate('User',{
+            //       email:output.email,
+            //       password:output.password,
+            //       age:output.age,
+            //       fullName:output.fullName,
+            //     });
+            //   } else {
+            //     alert('Incorrect email or password');
+            //   }
+            // } catch (err) {
+            //   console.log(err);
+            // }correct
           
-          //   navigation.navigate('User',);
-          // } else {
-          //   alert('Enter correct username and password');
-          // }
+          console.log(values);
+          const response = await signIn({
+            email: values.email,
+            password: values.password,
+          });
+          console.log(response.user);
+          let account = response.user;
+
+          
+          if (response.user) {
+         
+            navigation.navigate('User', 
+            { email : account.email,
+              name : account.name,
+              age : account.age,
+            });
+          } else {
+            alert('Enter correct username and password');
+          }
 
           // try {
             // const data = await AsyncStorage.getItem(values.email)
@@ -89,7 +96,7 @@ const Login = ({ navigation }) => {
           //     alert("Successfully Logged In");
           //     iname = output.name;
           //     iage = output.age;
-          //     iemail = output.email;pva
+          //     iemail = output.email;
           //     console.log(values);
           //     navigation.navigate('User',  { iname ,iemail ,iage});
           //   };

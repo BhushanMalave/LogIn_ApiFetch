@@ -10,6 +10,8 @@ import Count from './src/screens/Count';
 import User from './src/screens/User';
 import CustomInput from './src/screens/CustomInput';
 import { Home } from './src/screens/Home';
+import UpdatePage from './src/screens/UpdatePage';
+import TabNav from './src/screens/TabNav';
 
 
 const Stack = createNativeStackNavigator();
@@ -21,8 +23,9 @@ function App() {
         <Stack.Screen name="Project" options={{ header: () => null }} component={Project} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="Count" component={Count} />
+        {/* <Stack.Screen name="Count" component={Count} /> */}
         <Stack.Screen name="User" options={{ header: () => null }}  component={User} />
+        <Stack.Screen name="UpdatePage" component={UpdatePage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

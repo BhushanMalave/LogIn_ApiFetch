@@ -70,31 +70,32 @@ const SignUp = ({ navigation }) => {
                 confirmPassword: '',
               }}
               onSubmit={async values => {
-                // const response = await signUp({
-                //   email: values.email,
-                //   name: values.fullName,
-                //   age: values.age,
-                //   password: values.password,
-                // });
-                // console.log('Im Here!!!!!!!', response);
-                // if (response.user) {
-                //   alert('succefully added');
-                //   const jsonValue =JSON.stringify(response.user);
-                //   await AsyncStorage.setItem(response.user._id,jsonValue);
-                //   navigation.navigate('Project');
-                // } else {
-                //   alert('Already Exists');
-                // }
+                const response = await signUp({
+                  email: values.email,
+                  name: values.fullName,
+                  age: values.age,
+                  password: values.password,
+                });
+                
+                console.log('Im Here!!!!!!!', response);
+                if (response.user) {
+                  alert('succefully added');
+                  const jsonValue =JSON.stringify(response.user);
+                  await AsyncStorage.setItem('userData',jsonValue);
+                  navigation.navigate('Project');
+                } else {
+                  alert('Already Exists');
+                }
 
-                try{
-                  await AsyncStorage.setItem(values.email,JSON.stringify(values));
-                  alert ("successfully added")
-                  console.log(values);
-                }
-                catch(err){
-                  console.log(err);
-                  alert ("user already exist")
-                }
+                // try{
+                //   await AsyncStorage.setItem(values.email,JSON.stringify(values));
+                //   alert ("successfully added")
+                //   console.log(values);
+                // }
+                // catch(err){
+                //   console.log(err);
+                //   alert ("user already exist")
+                // }  correct
 
 
                 // try {
