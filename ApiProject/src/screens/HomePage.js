@@ -9,12 +9,8 @@ import {
   Pressable,
 } from 'react-native';
 
+const HomePage = ({ navigation }) => {
 
-// import landingPage from '../images/landingPage.jpg';
-// const image = { uri: "https://reactjs.org/logo-og.png" };
-
-const Project = ({navigation}) => {
-  
   const onClickhandler1 = () => {
     navigation.navigate('SignUp');
   };
@@ -23,7 +19,7 @@ const Project = ({navigation}) => {
   };
   return (
     <ImageBackground
-      style={{flex: 1, resizeMode: 'cover'}}
+      style={{ flex: 1, resizeMode: 'cover' }}
       source={require('../../src/images/bg3.jpg')}>
       <View style={[styles.container]}>
         {/* <ImageBackground source={image} resizeMode="cover" style={styles.image}></ImageBackground>  */}
@@ -33,7 +29,7 @@ const Project = ({navigation}) => {
             Exprience the easiest way to get{' '}
             <Text style={[styles.text2]}>great food</Text> Delivery
           </Text>
-          
+
         </View>
         <View style={[styles.view3]}>
           {/* <Button style={styles.button} title="Login with your account" color="grey" onPress={ () => {}}/>
@@ -102,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Project;
+export default HomePage;

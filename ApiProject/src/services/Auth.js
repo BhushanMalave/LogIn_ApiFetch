@@ -44,8 +44,6 @@ export const update = async (body, token) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${parseJson.token}`,
-
-
     },
     body: JSON.stringify(body),
   });
@@ -53,3 +51,17 @@ export const update = async (body, token) => {
   console.log(response);
   return response;
 };
+
+
+export const logout = async (token) => {
+  const parseJson = JSON.parse(token);
+  const res = await fetch(BASE_URL + 'user/logout', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${parseJson.token}`,
+    },
+  });
+  const response = await res.json();
+  console.log(response);
+  return response;
+}

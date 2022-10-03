@@ -12,13 +12,13 @@ import {
   Pressable,
 } from 'react-native';
 
-import { Formik, Field } from 'formik';
+import {Formik, Field} from 'formik';
 import * as yup from 'yup';
-import CustomInput from './CustomInput';
-import { signUp } from '../services/Auth';
+import CustomInput from '../components/CustomInput';
+import {signUp} from '../services/Auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const SignUp = ({ navigation }) => {
+const SignUp = ({navigation}) => {
   const signUpValidationSchema = yup.object().shape({
     fullName: yup
       .string()
@@ -28,7 +28,7 @@ const SignUp = ({ navigation }) => {
       .string()
       .matches(/\d\d/, 'Enter a valid age')
       .required('Age is required')
-      .max(2, ({ max }) => `Password must be at least ${max} characters`),
+      .max(2, ({max}) => `Password must be at least ${max} characters`),
     email: yup
       .string()
       .email('Please enter valid email')
@@ -42,7 +42,7 @@ const SignUp = ({ navigation }) => {
       //     /[!@#$%^&*()\-_"=+{}; :,<.>]/,
       //     'Password must have a special character',
       //   )
-      .min(8, ({ min }) => `Password must be at least ${min} characters`)
+      .min(8, ({min}) => `Password must be at least ${min} characters`)
       .required('Password is required'),
     confirmPassword: yup
       .string()
@@ -53,12 +53,12 @@ const SignUp = ({ navigation }) => {
   return (
     <>
       <ImageBackground
-        style={{ flex: 1, resizeMode: 'cover' }}
+        style={{flex: 1, resizeMode: 'cover'}}
         source={require('../../src/images/bg3.jpg')}>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView style={styles.container}>
           <View style={styles.signupContainer}>
-            <Text style={{ fontSize: 20 }}>Sign Up Screen</Text>
+            <Text style={{fontSize: 20}}>Sign Up Screen</Text>
 
             <Formik
               validationSchema={signUpValidationSchema}
@@ -76,13 +76,13 @@ const SignUp = ({ navigation }) => {
                   age: values.age,
                   password: values.password,
                 });
-                
+
                 console.log('Im Here!!!!!!!', response);
                 if (response.user) {
                   alert('succefully added');
-                  const jsonValue =JSON.stringify(response.user);
-                  await AsyncStorage.setItem('userData',jsonValue);
-                  navigation.navigate('Project');
+                  const jsonValue = JSON.stringify(response.user);
+                  await AsyncStorage.setItem('userData', jsonValue);
+                  navigation.navigate('HomePage');
                 } else {
                   alert('Already Exists');
                 }
@@ -97,7 +97,6 @@ const SignUp = ({ navigation }) => {
                 //   alert ("user already exist")
                 // }  correct
 
-
                 // try {
                 //   const jsonValue = JSON.stringify(values)
                 //   await AsyncStorage.setItem(values.email, jsonValue)
@@ -110,7 +109,7 @@ const SignUp = ({ navigation }) => {
                 // // console.log(values);
                 // // navigation.navigate('Project');
               }}>
-              {({ handleSubmit, isValid }) => (
+              {({handleSubmit, isValid}) => (
                 <>
                   <Field
                     component={CustomInput}
@@ -148,10 +147,18 @@ const SignUp = ({ navigation }) => {
                   />
 
                   <Pressable style={styles.loginButton}>
-                    <Text style={{ fontSize: 15, textAlign: 'center', color: 'white', marginTop: 8, }} onPress={handleSubmit} disabled={!isValid}  >
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        textAlign: 'center',
+                        color: 'white',
+                        marginTop: 8,
+                      }}
+                      onPress={handleSubmit}
+                      disabled={!isValid}>
                       SignUp
-                    </Text></Pressable>
-                 
+                    </Text>
+                  </Pressable>
                 </>
               )}
             </Formik>
@@ -185,14 +192,12 @@ const styles = StyleSheet.create({
     height: 30,
     textAlign: 'center',
   },
-  loginButton:
-  {
+  loginButton: {
     backgroundColor: 'orange',
     marginVertical: 10,
     height: 35,
     width: 80,
     borderRadius: 5,
-
   },
 });
 export default SignUp;

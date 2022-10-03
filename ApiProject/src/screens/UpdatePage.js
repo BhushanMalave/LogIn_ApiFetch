@@ -14,7 +14,7 @@ import {
 
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
-import CustomInput from './CustomInput';
+import CustomInput from '../components/CustomInput';
 import { update } from '../services/Auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -72,24 +72,20 @@ const UpdatePage = ({ navigation }) => {
                                 console.log('clicked');
                                 try {
                                     const data = await AsyncStorage.getItem('userData')
-                                    const output = JSON.parse(data)
+                                    // const output = JSON.parse(data)
                                     setToken(data);
-                                    // console.log("This OP",);
                                     const response = await update({
                                         age: values.age
                                     }, token);
-                                    // console.log('Successfully Updated!', response);
+                                
                                     let account = response.data;
     
                                     if (response.data) {
                                         alert('succefully Updated');
-                                        //   const jsonValue =JSON.stringify(response.user);
-                                        //   await AsyncStorage.setItem(response.user._id,jsonValue);
                                         navigation.navigate('User', {
                                             name: account.name,
                                             email: account.email,
                                             age: account.age,
-    
                                         });
                                     } else {
                                         alert('Update Failed');
@@ -98,25 +94,6 @@ const UpdatePage = ({ navigation }) => {
                                     console.log(err);
                                 }
 
-                                const response = await update({
-                                    age: values.age
-                                }, token);
-                                // console.log('Successfully Updated!', response);
-                                let account = response.data;
-
-                                if (response.data) {
-                                    alert('succefully Updated');
-                                    //   const jsonValue =JSON.stringify(response.user);
-                                    //   await AsyncStorage.setItem(response.user._id,jsonValue);
-                                    navigation.navigate('User', {
-                                        name: account.name,
-                                        email: account.email,
-                                        age: account.age,
-
-                                    });
-                                } else {
-                                    alert('Update Failed');
-                                }
 
                                 // try{
                                 //   await AsyncStorage.setItem(values.email,JSON.stringify(values));
@@ -127,18 +104,6 @@ const UpdatePage = ({ navigation }) => {
                                 //   console.log(err);
                                 //   alert ("user already exist")
                                 // }  correct
-
-
-                                // try {
-                                //   const jsonValue = JSON.stringify(values)
-                                //   await AsyncStorage.setItem(values.email, jsonValue)
-                                //   alert("Successfully Added")
-                                //   console.log(jsonValue);
-                                // } catch (e) {
-                                //   console.log(e);
-                                //   alert('User Already Exist');
-                                // }
-                                // // console.log(values);
                                 // // navigation.navigate('Project');
                             }}>
                             {({ handleSubmit, isValid }) => (

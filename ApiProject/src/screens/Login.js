@@ -43,29 +43,29 @@ const Login = ({ navigation }) => {
         validationSchema={loginValidationSchema}
         initialValues={{ email: '', password: '' }}
         onSubmit={async values => {
-      
-            // try {
-            //   const data = await AsyncStorage.getItem(values.email);
-            //   const output = JSON.parse(data);
 
-            //   // const user = JSON.parse(values);
-            //   if (output.email == values.email && output.password == values.password
-            //   ) {
-            //     // alert('successfully logged in');
-            //     console.log(values);
-            //     navigation.navigate('User',{
-            //       email:output.email,
-            //       password:output.password,
-            //       age:output.age,
-            //       fullName:output.fullName,
-            //     });
-            //   } else {
-            //     alert('Incorrect email or password');
-            //   }
-            // } catch (err) {
-            //   console.log(err);
-            // }correct
-          
+          // try {
+          //   const data = await AsyncStorage.getItem(values.email);
+          //   const output = JSON.parse(data);
+
+          //   // const user = JSON.parse(values);
+          //   if (output.email == values.email && output.password == values.password
+          //   ) {
+          //     // alert('successfully logged in');
+          //     console.log(values);
+          //     navigation.navigate('User',{
+          //       email:output.email,
+          //       password:output.password,
+          //       age:output.age,
+          //       fullName:output.fullName,
+          //     });
+          //   } else {
+          //     alert('Incorrect email or password');
+          //   }
+          // } catch (err) {
+          //   console.log(err);
+          // }correct
+
           console.log(values);
           const response = await signIn({
             email: values.email,
@@ -74,21 +74,22 @@ const Login = ({ navigation }) => {
           console.log(response.user);
           let account = response.user;
 
-          
+
           if (response.user) {
-         
-            navigation.navigate('User', 
-            { email : account.email,
-              name : account.name,
-              age : account.age,
-            });
+
+            navigation.navigate('User',
+              {
+                email: account.email,
+                name: account.name,
+                age: account.age,
+              });
           } else {
             alert('Enter correct username and password');
           }
 
           // try {
-            // const data = await AsyncStorage.getItem(values.email)
-            // const output = JSON.parse(data)
+          // const data = await AsyncStorage.getItem(values.email)
+          // const output = JSON.parse(data)
           //   console.log(output);
 
           //   // const user = JSON.parse(values);
@@ -143,9 +144,9 @@ const Login = ({ navigation }) => {
               </Text>
             )}
             <Pressable style={styles.loginButton}>
-                    <Text style={{ fontSize: 15, textAlign: 'center', color: 'white', marginTop: 8, }} onPress={handleSubmit} disabled={!isValid}  >
-                      Login
-                    </Text></Pressable>
+              <Text style={{ fontSize: 15, textAlign: 'center', color: 'white', marginTop: 8, }} onPress={handleSubmit} disabled={!isValid}  >
+                Login
+              </Text></Pressable>
           </>
         )}
       </Formik>
