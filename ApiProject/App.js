@@ -11,6 +11,7 @@ import User from './src/screens/User';
 import CustomInput from './src/components/CustomInput';
 import HomePage from './src/screens/HomePage';
 import UpdatePage from './src/screens/UpdatePage';
+import Flex from './src/screens/flex';
 import TabNav from './src/screens/TabNav';
 import { Home } from './src/newProject/Home';
 import { LogIn } from './src/newProject/LogIn';
@@ -27,7 +28,8 @@ function App() {
         <Stack.Screen name="HomePage" options={{ header: () => null }} component={HomePage} />
         <Stack.Screen name="Login" options={{ header: () => null }} component={Login} />
         <Stack.Screen name="SignUp" options={{ header: () => null }} component={SignUp} />
-        {/* <Stack.Screen name="Count" component={Count} /> */}
+        <Stack.Screen name="Count" component={Count} />
+        <Stack.Screen name="Flex" component={Flex} />
         <Stack.Screen name="User" options={{ header: () => null }}  component={User} />
         <Stack.Screen name="UpdatePage" component={UpdatePage} />
       </Stack.Navigator>

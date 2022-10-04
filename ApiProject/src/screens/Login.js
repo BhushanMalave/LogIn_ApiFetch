@@ -115,6 +115,7 @@ const Login = ({navigation}) => {
             <TextInput
               name="email"
               placeholder="Email Address"
+              placeholderTextColor={'black'}
               style={styles.textInput}
               onChangeText={handleChange('email')}
               onBlur={handleBlur('email')}
@@ -129,6 +130,7 @@ const Login = ({navigation}) => {
               placeholder="Password"
               style={styles.textInput}
               onChangeText={handleChange('password')}
+              placeholderTextColor={'black'}
               onBlur={handleBlur('password')}
               value={values.password}
               secureTextEntry
@@ -178,6 +180,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     textAlign: 'center',
+    color:'black',
   },
   loginButton: {
     backgroundColor: 'orange',

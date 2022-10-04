@@ -124,6 +124,7 @@ const UpdatePage = ({navigation}) => {
                     component={CustomInput}
                     name="age"
                     placeholder="Age"
+                    placeholderTextColor={'black'}
                     keyboardType="numeric"
                     style={styles.field}
                   />
@@ -187,6 +188,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 30,
     textAlign: 'center',
+    color:'black',
   },
   loginButton: {
     backgroundColor: 'orange',

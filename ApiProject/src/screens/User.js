@@ -55,7 +55,7 @@ export default User = ({navigation}) => {
       <View>
         <Text
           style={{
-            fontSize: 30,
+            fontSize: 45,
             textAlign: 'center',
             marginHorizontal: 5,
             marginVertical: 30,
@@ -64,11 +64,11 @@ export default User = ({navigation}) => {
         </Text>
         <View style={styles.container}>
           <Text style={styles.text1}> Name</Text>
-          <Text style={styles.text}>{route.params.name}</Text>
+          <Text style={styles.text}>  {route.params.name}</Text>
           <Text style={styles.text1}> Email</Text>
-          <Text style={styles.text}>{route.params.email}</Text>
+          <Text style={styles.text}>  {route.params.email}</Text>
           <Text style={styles.text1}> Age</Text>
-          <Text style={styles.text}>{route.params.age}</Text>
+          <Text style={styles.text}>  {route.params.age}</Text>
         </View>
 
         <Pressable style={styles.Button}>
@@ -98,8 +98,33 @@ export default User = ({navigation}) => {
             Logout
           </Text>
         </Pressable>
+        <Pressable style={styles.Button}>
+          <Text
+            style={{
+              fontSize: 15,
+              textAlign: 'center',
+              color: 'black',
+              marginTop: 8,
+            }}
+            onPress={ () => {navigation.navigate('Count')}}>
+            Count
+          </Text>
+        </Pressable>
+        <Pressable style={styles.Button}>
+          <Text
+            style={{
+              fontSize: 15,
+              textAlign: 'center',
+              color: 'black',
+              marginTop: 8,
+            }}
+            onPress={() => {navigation.navigate('Flex')}}>
+            Flex
+          </Text>
+        </Pressable>
       </View>
     </SafeAreaView>
+    
   );
 };
 
@@ -108,13 +133,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     alignContent: 'center',
-    // backgroundColor:'cyan'
+    backgroundColor:'#57a89f',
   },
   container: {
     marginHorizontal: 25,
     marginVertical: 15,
     borderWidth: 2,
-    backgroundColor: '#e6e6e6',
+    backgroundColor: '#A85760',
     borderRadius: 15,
   },
   text: {
@@ -125,10 +150,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: 3,
     marginBottom: 10,
+    color:'black',
   },
   text1: {
     marginVertical: 7,
     fontSize: 15,
+    color:'black',
   },
   Button: {
     backgroundColor: 'orange',

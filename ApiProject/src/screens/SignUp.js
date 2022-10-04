@@ -191,6 +191,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 30,
     textAlign: 'center',
+    color:'black',
   },
   loginButton: {
     backgroundColor: 'orange',
