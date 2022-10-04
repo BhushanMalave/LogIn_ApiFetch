@@ -12,6 +12,10 @@ import CustomInput from './src/components/CustomInput';
 import HomePage from './src/screens/HomePage';
 import UpdatePage from './src/screens/UpdatePage';
 import TabNav from './src/screens/TabNav';
+import { Home } from './src/newProject/Home';
+import { LogIn } from './src/newProject/LogIn';
+
+
 
 
 const Stack = createNativeStackNavigator();
@@ -28,7 +32,15 @@ function App() {
         <Stack.Screen name="UpdatePage" component={UpdatePage} />
       </Stack.Navigator>
     </NavigationContainer>
+  //   <NavigationContainer>
+  //   <Stack.Navigator >
+  //     <Stack.Screen name="LogIn" component={LogIn} />
+  //      <Stack.Screen name="Count" component={Count} /> 
+     
+  //   </Stack.Navigator>
+  // </NavigationContainer>
   );
 };
 
 export default App;
+ 

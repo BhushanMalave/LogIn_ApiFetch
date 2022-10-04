@@ -12,8 +12,9 @@ import {
 } from 'react-native';
 import {Formik} from 'formik';
 import * as yup from 'yup';
+import AuthProvider,{ signin}  from '../newProject/AuthContect';
 
-export const Home = () => {
+export const LogIn = () => {
 
   const onclickHandler = () => {
 
@@ -46,16 +47,8 @@ export const Home = () => {
         validationSchema={loginValidationSchema}
         initialValues={{email: '', password: ''}}
         onSubmit={async values => {
-          // console.log(values);
-          const response = await signIn({
-            email: values.email,
-            password: values.password,
-          });
-          if (response.user) {
-            navigation.navigate('Count');
-          } else {
-            alert('Enter correct username and password');
-          }
+          console.log(values);
+          signin(values.email,values.password); 
         }}>
            {({
           handleChange,

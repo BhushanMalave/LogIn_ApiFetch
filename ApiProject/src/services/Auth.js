@@ -1,4 +1,4 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const BASE_URL = 'https://api-nodejs-todolist.herokuapp.com/';
 
 export const signIn = async body => {
@@ -12,10 +12,10 @@ export const signIn = async body => {
   });
   const response = await res.json();
   try {
-    const stringifiedResponse = JSON.stringify(response)
-    await AsyncStorage.setItem('userData', stringifiedResponse)
+    const stringifiedResponse = JSON.stringify(response);
+    await AsyncStorage.setItem('userData', stringifiedResponse);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
   console.log(response);
   return response;
@@ -41,9 +41,9 @@ export const update = async (body, token) => {
   const res = await fetch(BASE_URL + 'user/me', {
     method: 'PUT',
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${parseJson.token}`,
+      Authorization: `Bearer ${parseJson.token}`,
     },
     body: JSON.stringify(body),
   });
@@ -52,16 +52,30 @@ export const update = async (body, token) => {
   return response;
 };
 
-
-export const logout = async (token) => {
-  const parseJson = JSON.parse(token);
+export const logout = async token => {
+  // const parseJson = JSON.parse(token);
   const res = await fetch(BASE_URL + 'user/logout', {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${parseJson.token}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
   });
   const response = await res.json();
   console.log(response);
   return response;
-}
+};
+
+// export const getUser =async (token) =>{
+//   const parseJson = JSON.parse(token);
+//   const res = await fetch(BASE_URL + 'user/me', {
+//     method: 'GET',
+//     headers: {
+//       'Authorization': `Bearer ${parseJson.token}`,
+//     },
+//   });
+//   const response = await res.json();
+//   console.log(response);
+//   return response;
+// }
